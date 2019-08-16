@@ -4,10 +4,16 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!--PONER EL TITULO dINAMICO d:yie -->
     <title>@yield('titulo', 'Biblioteca') | tutorialesvirtuales</title>
+
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <!-- Bootstrap 3.3.7 -->
+    <!-- Bootstrap 3.3.7  
+        $thme para cambiar las rutas yh no tener que cambiar todo el templeate, esta variable la implemetamos en 
+           app/Providers/AppServiceProvider,php/public function boot() =>View::share('theme', 'lte');      
+              -->
     <link rel="stylesheet" href="{{asset("assets/$theme/bower_components/bootstrap/dist/css/bootstrap.min.css")}}">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{asset("assets/$theme/bower_components/font-awesome/css/font-awesome.min.css")}}">
@@ -19,8 +25,9 @@
            folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="{{asset("assets/$theme/dist/css/skins/_all-skins.min.css")}}">
 
+    <!-- par poder un pligin especifico si tiene cus propios css -->
     @yield("styles")
-
+        
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -33,7 +40,7 @@
 </head>
 
 <body class="hold-transition skin-blue layout-boxed sidebar-mini">
-    <!-- Site wrapper -->
+    <!-- Site wrapper  donde va todo el contenido de la pg --centro-->
     <div class="wrapper">
         <!-- Inicio Header -->
         @include("theme/$theme/header")
@@ -42,10 +49,12 @@
         @include("theme/$theme/aside")
         <!-- Fin Aside -->
         <div class="content-wrapper">
+    
             <!-- Content Header (Page header) -->
             <section class="content">
                 @yield('contenido')
             </section>
+    
         </div>
         <!--Inicio Footer -->
         @include("theme/$theme/footer")
@@ -60,8 +69,10 @@
     <script src="{{asset("assets/$theme/bower_components/fastclick/lib/fastclick.js")}}"></script>
     <!-- AdminLTE App -->
     <script src="{{asset("assets/$theme/dist/js/adminlte.min.js")}}"></script>
-    <!-- AdminLTE for demo purposes -->
+    
+    <!-- por si una pag lo requiere  -->
     @yield("scripts")
+
 </body>
 
 </html>
